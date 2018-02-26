@@ -8,18 +8,21 @@ By starting with 1 and 2, the first 10 terms will be:
 By considering the terms in the Fibonacci sequence whose values do not exceed four million, 
 find the sum of the even-valued terms.
 """
-a=1
-b=2
-c=0
-print(a,b)
-total_even_val=2
-for i in range (2,(4000000-1)):
-    c=b+a
-    print(str(c))
-    a=b
-    b=c
-    if c%2==0:
-        total_even_val+=c
-        continue
+i = 0
+fib_series = 0
+total_even_val = 0
+def fib_sum(i):
+    if i <= 2:
+        return i
+    else:
+        result = fib_sum(i-1)+fib_sum(i-2)
+        return result
 
-print("sum of even-valued terms of fibonacci seq upto 4 million:",total_even_val)
+for i in range(0, 4000000, 1):
+        fib_series = fib_sum(i)
+        print fib_series
+        if fib_series % 2 == 0:
+            total_even_val+=fib_series
+        else:
+            continue
+print ("sum of even fib_series upto" + " " + str(int(i)) + " " + "is" + " " + str(int(total_even_val)))
